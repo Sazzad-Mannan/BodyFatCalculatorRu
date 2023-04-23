@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Калькулятор жира в организме</string>
+    <string name="hip">Бедро :</string>
+    <string name="Weight">Вес :</string>
+    <string name="waist">Талия :</string>
+    <string name="neck">Шея :</string>
+    <string name="gender">Гендер :</string>
+    <string name="Height">Высота :</string>
+    <string name="calculate">Рассчитать</string>
+    <string name="detail2">Процент жира в организме:</string>
+
+
+
+</resources>
