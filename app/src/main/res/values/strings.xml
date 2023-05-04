@@ -1,14 +1,67 @@
 <resources>
-    <string name="app_name">Калькулятор жира в организме</string>
-    <string name="hip">Бедро :</string>
-    <string name="Weight">Вес :</string>
-    <string name="waist">Талия :</string>
-    <string name="neck">Шея :</string>
-    <string name="gender">Гендер :</string>
-    <string name="Height">Высота :</string>
-    <string name="calculate">Рассчитать</string>
-    <string name="detail2">Процент жира в организме:</string>
+    <string name="app_name">Калькулятор жировых отложений</string>
+    <string name="how"><u>Знать о методе расчета</u></string>
+    <string name="height">Высота</string>
+    <string name="Weight">Масса</string>
+    <string name="Waist">Талия</string>
+    <string name="Neck">Шея</string>
+    <string name="Hip">Бедро</string>
+    <string name="Gender">Пол</string>
+    <string name="Calculate">Рассчитать</string>
+    <string name="about">
+\n<b>Метод ВМС США:</b>\n
+
+Существует много специальных методов, используемых для измерения жира в организме. В приведенном выше калькуляторе используется метод с использованием уравнений, разработанный в Центре исследований здоровья ВМС Ходждоном и Беккетом в 1984 году.\n\n
+<b>Формула процента жира в организме для мужчин:</b>\n
 
 
+СИ, метрические единицы:\n
+BFP =
+495/(1.0324 - 0.19077×log10(талия-шея) + 0.15456×log10(рост))
+        - 450\n\n<b>Формула процента жира в организме для женщин:</b>\n
+
+СИ, метрические единицы:\n
+BFP =
+495/(1.29579 - 0.35004×log10(талия+бедро-шея) + 0.22100×log10(рост))
+- 450
+
+    </string>
+    <string name="your">Ваш процент жира в организме:</string>
+    <string name="lean">НАКЛОНЯТЬ</string>
+
+
+    <string name="title">ТАБЛИЦА ЖИРА % ТЕЛА</string>
+    <string name="m">ЛЮДИ</string>
+    <string name="f">ЖЕНЩИНЫ</string>
+    <string name="male">Мужской</string>
+    <string name="female">Женский</string>
+    <string name="in">дюйм</string>
+    <string name="ft">фут</string>
+    <string name="kg">кг</string>
+    <string name="lbs">фунт</string>
+    <string name="cm">см</string>
+    <string name="toast">Пожалуйста, введите свой рост, вес, обхват талии, шеи и бедер.</string>
+    <string name="l1">НИЗКИЙ РИСК ЖИРА</string>
+    <string name="l2">УЛЬТРА ЛЕГКИЙ</string>
+    <string name="l3">НАКЛОНЯТЬ</string>
+    <string name="l4">СРЕДНЕ ЖИРНЫЙ</string>
+    <string name="l5">СРЕДНЕ ЖИРНЫЙ</string>
+    <string name="l6">ВЫСОКИЙ РИСК ЖИРА</string>
+    <string name="m1">5%</string>
+    <string name="m2">8%</string>
+    <string name="m3">12%</string>
+    <string name="m4">20%</string>
+    <string name="m5">30%</string>
+    <string name="f1">15%</string>
+    <string name="f2">18%</string>
+    <string name="f3">22%</string>
+    <string name="f4">30%</string>
+    <string name="f5">40%</string>
+    <string name="d1">Спросите своего поставщика медицинских услуг о том, как безопасно увеличить жировые отложения.</string>
+    <string name="d2">Это уровень жира в организме, который часто встречается у большинства элитных спортсменов.</string>
+    <string name="d3">Этот уровень жира в организме ниже, чем у большинства людей, и полезен для здоровья.</string>
+    <string name="d4">Этот уровень жира в организме, как правило, приемлем для хорошего здоровья.</string>
+    <string name="d5">Этот уровень жира в организме указывает на избыточное накопление жира.</string>
+    <string name="d6">Спросите своего поставщика медицинских услуг о том, как безопасно уменьшить жировые отложения.</string>
 
 </resources>

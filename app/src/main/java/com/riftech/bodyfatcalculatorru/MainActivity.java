@@ -2,15 +2,24 @@ package com.riftech.bodyfatcalculatorru;
 
 
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Html;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Objects;
@@ -25,7 +34,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*ActionBar bar = getSupportActionBar();
+        assert bar != null;
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFFFF")));
+        bar.setTitle(Html.fromHtml("<font color='#000000'>"+getString(R.string.app_name)+"</font>"));*/
+
         Button button=(Button)findViewById(R.id.button);
+        ProgressBar pgsBar = (ProgressBar) findViewById(R.id.pBar);
         Spinner dropdown = findViewById(R.id.spinner);
         Spinner dropdown1 = findViewById(R.id.spinner3);
         Spinner dropdown2 = findViewById(R.id.spinner4);
@@ -37,9 +52,47 @@ public class MainActivity extends AppCompatActivity {
         EditText editText3 = (EditText)findViewById(R.id.editTextNumberDecimal6);
         EditText editText4 = (EditText)findViewById(R.id.editTextNumberDecimal8);
         EditText editText5 = (EditText)findViewById(R.id.editTextNumberDecimal10);
+        TextView txt1=(TextView)findViewById(R.id.textView10);
+        TextView txt2=(TextView)findViewById(R.id.textView2);
+        TextView txt3=(TextView)findViewById(R.id.textView8);
+        TextView txt4=(TextView)findViewById(R.id.textView4);
+        TextView txt5=(TextView)findViewById(R.id.textView5);
+        TextView txt6=(TextView)findViewById(R.id.textView9);
+        TextView txt7=(TextView)findViewById(R.id.textView7);
+        //dropdown.setPopupBackgroundResource(R.drawable.spinner);
+        //ConstraintLayout main=(ConstraintLayout) findViewById(R.id.main);
+        //RelativeLayout rl=(RelativeLayout)findViewById(R.id.progressLayout);
+
+
+        txt1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                pgsBar.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(MainActivity.this, MainActivity3.class);
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+
+
+                        pgsBar.setVisibility(View.GONE);
+                        startActivity(intent);
+
+                        //main.setVisibility(View.VISIBLE);
+                    }
+                }, 5000);
+
+            }
+        });
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+
+
+
+
                 // click handling code
                 h_unit = dropdown.getSelectedItem().toString();
                 w_unit = dropdown1.getSelectedItem().toString();
@@ -48,31 +101,32 @@ public class MainActivity extends AppCompatActivity {
                 p_unit = dropdown5.getSelectedItem().toString();
                 gender = dropdown4.getSelectedItem().toString();
                 if(editText1.getText().toString().equals("") || editText2.getText().toString().equals("")|| editText3.getText().toString().equals("")|| editText4.getText().toString().equals("")|| editText5.getText().toString().equals("")){
-                    Toast toast = Toast.makeText(getApplicationContext(), "Please enter your height, weight,waist, neck and hip measurements.", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.toast), Toast.LENGTH_SHORT);
                     toast.show();
                 }else {
+                    pgsBar.setVisibility(View.VISIBLE);
                     weight = Float.parseFloat(editText2.getText().toString());
                     height = Float.parseFloat(editText1.getText().toString());
                     waist = Float.parseFloat(editText3.getText().toString());
                     neck = Float.parseFloat(editText4.getText().toString());
                     hip = Float.parseFloat(editText5.getText().toString());
-                    if (Objects.equals(h_unit, "футов")) {
+                    if (Objects.equals(h_unit, getString(R.string.ft))) {
                         height = height * 30.48;
                     }
 
-                    if (Objects.equals(w_unit, "фунтов")) {
+                    if (Objects.equals(w_unit, getString(R.string.lbs))) {
                         weight = weight * 0.45359237;
                     }
-                    if (Objects.equals(wi_unit, "дюймов")) {
+                    if (Objects.equals(wi_unit, getString(R.string.in))) {
                         waist = waist * 2.54;
                     }
-                    if (Objects.equals(n_unit, "дюймов")) {
+                    if (Objects.equals(n_unit, getString(R.string.in))) {
                         neck = neck * 2.54;
                     }
-                    if (Objects.equals(p_unit, "дюймов")) {
+                    if (Objects.equals(p_unit, getString(R.string.in))) {
                         hip = hip * 2.54;
                     }
-                    if(Objects.equals(gender, "Мужчина")){
+                    if(Objects.equals(gender, getString(R.string.male))){
                         bfp=(495/(1.0324-(0.19077*Math.log10(waist-neck))+(0.15456*Math.log10(height))))-450;
                     }else{
                         bfp=(495/(1.29579-(0.35004*Math.log10(waist+hip-neck))+(0.22100*Math.log10(height))))-450;
@@ -85,7 +139,21 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                     intent.putExtra("bfp", bfp);
                     intent.putExtra("gender", gender);
-                    startActivity(intent);
+
+                    new Handler().postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+
+
+                            pgsBar.setVisibility(View.GONE);
+                            startActivity(intent);
+
+                            //main.setVisibility(View.VISIBLE);
+                        }
+                    }, 5000);
+
                 }
             }
         });
@@ -93,12 +161,12 @@ public class MainActivity extends AppCompatActivity {
         //get the spinner from the xml.
 
 //create a list of items for the spinner.
-        String[] items = new String[]{"футов", "см"};
-        String[] items1 = new String[]{"кг", "фунтов"};
-        String[] items2 = new String[]{"Женский", "Мужчина"};
-        String[] items3 = new String[]{"дюймов", "см"};
+        String[] items = new String[]{getString(R.string.ft), getString(R.string.cm)};
+        String[] items1 = new String[]{getString(R.string.kg), getString(R.string.lbs)};
+        String[] items2 = new String[]{getString(R.string.male),getString(R.string.female)};
+        String[] items3 = new String[]{getString(R.string.in), getString(R.string.cm)};
 
-//create an adapter to describe how the items are displayed, adapters are used дюймов several places дюймов android.
+//create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items1);
